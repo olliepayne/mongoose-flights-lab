@@ -5,6 +5,7 @@ module.exports = {
   new: newFlight,
   create,
   show,
+  createTicket,
 }
 
 function index(req, res) {
@@ -32,4 +33,13 @@ function show(req, res) {
     title: 'Flight Details',
     flight: Flight.findById(req.params.id),
   });
+}
+
+function createTicket(req, res) {
+  console.log('test');
+  // const flight = Flight.findById(req.params.id);
+  // flight.tickets.push(req.body);
+  // flight.save((err, flight) => {
+  //   res.redirect(`/flights`);
+  // });
 }

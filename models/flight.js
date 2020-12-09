@@ -13,6 +13,4 @@ const flightSchema = new Schema({
   departs: {type: Date, default: () => Date.now() + 365 * 24 * 60 * 60 * 1000},
   tickets: [ticketSchema]
 });
-
-// Compile the schema into a model and export it
 module.exports = mongoose.model('Flight', flightSchema);
