@@ -1,35 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %>></title>
-</head>
-<body>
-  <h1> Flights</h1>
-    <table id="list">
-        <thead>
-          <tr>
-            <th>Airline</th>
-            <th>Airport</th>
-            <th>Flight number</th>
-            <th>Depart</th>
-          </tr>
-        </thead>
-    <tbody>
-        <% flights.forEach((f) => { %>
-            <tr>
-                <td><%= f.airline %> </td>
-                <td><%= f.airport %> </td>
-                <td><%= f.flightNo %> </td>
-                <td><%= f.departs %> </td>
-                <td><a href="/flights/<%= f._id %>">Details</a></td>
-                <td><form action="flights/<%= f._id %>?_method=DELETE" method="POST">
-                    <button type="submit">X</button>
-                  </form></td>
-            </tr>
-                <% }) %>
-        </tbody>
-        </table>
-</body>
-</html>
+<%- include('../partials/header') %>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th>Airline</th>
+      <th>Airport</th>
+      <th>Flight number</th>
+      <th>Depart</th>
+    </tr>
+  </thead>
+<tbody>
+  <% flights.forEach((f) => { %>
+    <tr>
+      <td><%= f.airline %> </td>
+        <td><%= f.airport %> </td>
+        <td><%= f.flightNo %> </td>
+        <td><%= f.departs %> </td>
+        <td><a href="/flights/<%= f._id %>">Details</a></td>
+        <!-- <td><form action="flights/<%= f._id %>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
+        </form></td> -->
+    </tr>
+  <% }) %>
+</tbody>
+</table>
+
+<%- include('../partials/footer') %>
