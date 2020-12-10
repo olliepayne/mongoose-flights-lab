@@ -29,19 +29,20 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  Flight.findById(req.params.id, (flight) => {
+  Flight.findById(req.params.id, (err, flight) => {
+    console.log(flight);
     res.render('flights/show', {
-      title: 'Flight',
+      title: `Flight ${flight.flightNo}`,
       flight,
     })
   });
 }
 
 function createTicket(req, res) {
-  console.log('test');
-  // const flight = Flight.findById(req.params.id);
-  // flight.tickets.push(req.body);
-  // flight.save((err, flight) => {
-  //   res.redirect(`/flights`);
-  // });
+  Flight.findById(req.params.id, (err, flight) => {
+    flight.tickets.push(req.body);
+    flight.save((err, flight) => {
+      res.redirect(`/flights/${req.params.id}/show`);
+    });
+  });
 }

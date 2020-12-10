@@ -1,9 +1,26 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="/flights/:id/show" method="POST"></form>
+<form id="new-form" action="/flights/<%= flight._id %>/tickets" method="POST">
   <input name="seat" required pattern="[A-F][1-9]\d?">
   <input type="number" name="price">
   <button type="submit">Add Ticket</button>
 </form>
+<table>
+  <thead>
+    <tr>
+      <th>Seat</th>
+      <th>Price</th>
+      <th>Destination</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% flight.tickets.forEach((t) => { %>
+      <tr>
+        <td><%= t.seat %> </td>
+        <td><%= t.price %> </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
 
 <%- include('../partials/footer') %>
