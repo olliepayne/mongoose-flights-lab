@@ -29,9 +29,11 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  res.render('flights/show', {
-    title: 'Flight Details',
-    flight: Flight.findById(req.params.id),
+  Flight.findById(req.params.id, (flight) => {
+    res.render('flights/show', {
+      title: 'Flight',
+      flight,
+    })
   });
 }
 
