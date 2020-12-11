@@ -10,7 +10,9 @@ var flightsRouter = require('./routes/flights');
 var app = express();
 
 // connect database
-require('./config/database');
+require('dotenv').config();
+
+require("./config/database");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -41,7 +41,6 @@ function details(req, res) {
       destinations: [Destination.find({})]
     })
   });
-  console.log(Destination.find({}));
 }
 
 function createTicket(req, res) {
@@ -61,9 +60,11 @@ function newDestination(req, res) {
 
 function createDestination(req, res) {
   const newDestination = new Destination(req.body);
-  newDestination.save((err) => {
-    Destination.find({}, (err, destinations) => {
+  newDestination.save((err, result) => {
+    if(err) { 
+      console.log(err); 
+    } else { 
       res.redirect('/flights/destinations/new');
-    });
-  })
+    } 
+  });
 }
