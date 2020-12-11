@@ -38,7 +38,7 @@ function details(req, res) {
     res.render('flights/details', {
       title: `Flight ${flight.flightNo}`,
       flight,
-      destinations: Destination.find({})
+      destinations: [Destination.find({})]
     })
   });
 }

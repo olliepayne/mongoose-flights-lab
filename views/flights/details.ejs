@@ -5,7 +5,7 @@
   <input type="number" value="0" required name="price">
   <select>
     <% destinations.forEach((d) => { %>
-      <option value=<% d %>> <% d.ref.airport %> </option>
+      <option value=" <%= d.airport %> "> <%= d.airport %> </option>
     <% }) %>
   </select>
   <button type="submit">Add Ticket</button>
@@ -23,7 +23,7 @@
       <tr>
         <td> <%= t.seat %> </td>
         <td>$ <%= t.price %> </td>
-        <td> <%= flight.destinations.airport %> </td>
+        <td></td>
       </tr>
     <% }) %>
   </tbody>
