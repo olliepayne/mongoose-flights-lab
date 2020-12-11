@@ -1,14 +1,11 @@
 <%- include('../partials/header') %>
 
-<form  id="new-form" action="/flights/destination/new" method="POST">
-  <select>
-    <option value="AUS">AUS</option>
-    <option value="DFW">DFW</option>
-    <option value="DEN">DEN</option>
-    <option value="SAN">SAN</option>
-    <option value="LAX">LAX</option>
-  </select>
+<form  id="new-form" action="/flights/destinations/new" method="POST">
+  <input name="airport" value="ex. AUS" required pattern="[A-Z][A-Z][A-Z]\d?">
   <button type="submit">Add Destination</button>
 </form>
+<% destinations.forEach((d) => { %>
+    <p> <%= d.airport %> </p>
+<% }) %>
 
 <%- include('../partials/footer') %>
