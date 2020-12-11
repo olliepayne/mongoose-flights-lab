@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<form  id="new-form" action="/flights/destination/new" method="POST">
+  <select>
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="SAN">SAN</option>
+    <option value="LAX">LAX</option>
+  </select>
+  <button type="submit">Add Destination</button>
+</form>
+
+<%- include('../partials/footer') %>
