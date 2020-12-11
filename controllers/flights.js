@@ -34,18 +34,20 @@ function create(req, res) {
 
 function details(req, res) {
   Flight.findById(req.params.id, (err, flight) => {
-    console.log(flight);
-    res.render('flights/details', {
-      title: `Flight ${flight.flightNo}`,
-      flight,
-      destinations: [Destination.find({})]
-    })
+    Destination.find({}, (err, destinations) => {
+      res.render('flights/details', {
+        title: `Flight ${flight.flightNo}`,
+        flight,
+        destinations
+      })
+    });
   });
 }
 
 function createTicket(req, res) {
   Flight.findById(req.params.id, (err, flight) => {
     flight.tickets.push(req.body);
+    flight.destination = req.body.destination;
     flight.save((err) => {
       res.redirect(`/flights/${req.params.id}/details`);
     });
@@ -61,10 +63,6 @@ function newDestination(req, res) {
 function createDestination(req, res) {
   const newDestination = new Destination(req.body);
   newDestination.save((err, result) => {
-    if(err) { 
-      console.log(err); 
-    } else { 
-      res.redirect('/flights/destinations/new');
-    } 
+    res.redirect('/flights/destinations/new');
   });
 }

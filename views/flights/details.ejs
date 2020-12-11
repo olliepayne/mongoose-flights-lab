@@ -2,10 +2,10 @@
 
 <form id="new-form" action="/flights/<%= flight._id %>/details" method="POST">
   <input name="seat" value="SEAT" required pattern="[A-F][1-9]\d?">
-  <input type="number" value="0" required name="price">
+  <input name="price" type="number" value="0" required>
   <select>
     <% destinations.forEach((d) => { %>
-      <option value=" <%= d.airport %> "> <%= d.airport %> </option>
+      <option name="destination"> <%= d.airport %> </option>
     <% }) %>
   </select>
   <button type="submit">Add Ticket</button>
@@ -23,7 +23,7 @@
       <tr>
         <td> <%= t.seat %> </td>
         <td>$ <%= t.price %> </td>
-        <td></td>
+        <td> <%= flight.destination %> </td>
       </tr>
     <% }) %>
   </tbody>
