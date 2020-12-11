@@ -7,16 +7,16 @@
       <option value="Southwest">Southwest</option>
       <option value="United">United</option>
     </select>
-    <label>Airport Destination</label>
-    <select name="airport">
-      <option value="AUS">AUS</option>
-      <option value="DFW">DFW</option>
-      <option value="DEN">DEN</option>
-      <option value="SAN">SAN</option>
-      <option value="LAX">LAX</option>
-    </select>
+    <label>Flight Number</label>
     <input type="number" name="flightNo">
+    <label>Depart Date</label>
     <input type="datetime-local" name="departs">
+    <label>Destination</label>
+    <select name="destination">
+      <% destinations.forEach((d) => { %>
+        <option> <%= d.airport %></option>
+      <% }) %>
+    </select>
     <button type="submit">Add Flight</button>
   </form>
 

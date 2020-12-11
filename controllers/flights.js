@@ -12,17 +12,19 @@ module.exports = {
 }
 
 function index(req, res) {
-  console.log('test');
   Flight.find({}, (err, flights) => {
-    res.render('flights/index', {title: 'All Flights', flights: flights});
+    console.log(flights.destination);
+    res.render('flights/index', {title: 'All Flights', flights});
   });
 }
 
 function newFlight(req, res) {
-  res.render('flights/new', {
-    title: 'Add New Flight',
-    err: ''
-  });
+  Destination.find({}, (err, destinations) => {
+    res.render('flights/new', {
+      title: 'Add New Flight',
+      destinations
+    });
+  })
 }
 
 function create(req, res) {
@@ -47,7 +49,6 @@ function details(req, res) {
 function createTicket(req, res) {
   Flight.findById(req.params.id, (err, flight) => {
     flight.tickets.push(req.body);
-    flight.destination = req.body.destination;
     flight.save((err) => {
       res.redirect(`/flights/${req.params.id}/details`);
     });

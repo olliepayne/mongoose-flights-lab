@@ -3,11 +3,6 @@
 <form id="new-form" action="/flights/<%= flight._id %>/details" method="POST">
   <input name="seat" value="SEAT" required pattern="[A-F][1-9]\d?">
   <input name="price" type="number" value="0" required>
-  <select>
-    <% destinations.forEach((d) => { %>
-      <option name="destination"> <%= d.airport %> </option>
-    <% }) %>
-  </select>
   <button type="submit">Add Ticket</button>
 </form>
 <table>
@@ -15,7 +10,6 @@
     <tr>
       <th>Seat</th>
       <th>Price</th>
-      <th>Destination</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +17,6 @@
       <tr>
         <td> <%= t.seat %> </td>
         <td>$ <%= t.price %> </td>
-        <td> <%= flight.destination %> </td>
       </tr>
     <% }) %>
   </tbody>
