@@ -41,6 +41,7 @@ function details(req, res) {
       destinations: [Destination.find({})]
     })
   });
+  console.log(Destination.find({}));
 }
 
 function createTicket(req, res) {
